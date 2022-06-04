@@ -1,0 +1,54 @@
+.burger {
+  cursor: pointer;
+  display: block;
+  background: transparent;
+  border: none;
+
+  &__line {
+    width: 16px;
+    display: block;
+    margin: 0 0 2px auto;
+    height: 2px;
+    transition: width 0.1s linear;
+
+    &:first-child {
+      top: 0;
+      transform: rotate(0deg);
+      position: relative;
+      transition: transform 0.2s linear, top 0.2s linear;
+    }
+
+    &:nth-child(2) {
+      opacity: 1;
+      transition: opacity 0.2s linear;
+    }
+
+    &:nth-child(3) {
+      position: relative;
+      top: 0;
+      transform: rotate(0deg);
+      transition: transform 0.2s linear, top 0.2s linear;
+    }
+  }
+
+  &.is-active {
+    .burger__line {
+      &:first-child {
+        top: 4px;
+        transform: rotate(45deg);
+        transition: transform 0.2s linear, top 0.2s linear;
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+        transition: opacity 0.2s linear;
+      }
+
+      &:nth-child(3) {
+        top: -4px;
+        transform: rotate(-45deg);
+        transition: transform 0.2s linear, top 0.2s linear;
+      }
+    }
+  }
+}

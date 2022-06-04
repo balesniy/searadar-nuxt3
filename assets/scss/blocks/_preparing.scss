@@ -1,0 +1,51 @@
+.preparing_checkin {
+  background: linear-gradient(90deg, #ffffff 38.74%, rgba(255, 255, 255, 0) 100%), url("/img/checkin.png") no-repeat;
+  background-size: cover;
+  background-position-x: right;
+  padding: 16px 20px 20px 20px;
+  border-radius: 3px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
+
+  & > p {
+    margin: 0;
+    max-width: 240px;
+  }
+}
+
+.preparing_list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 16px;
+
+  &-item {
+    background: $white;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
+    padding: 16px 20px 20px 20px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+
+    & > .button {
+      margin-top: auto;
+    }
+  }
+}
+
+@media (max-width: 1399.98px) {
+  .preparing_list {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+
+@media (max-width: 479.98px) {
+  .preparing_list {
+    grid-template-columns: 1fr;
+
+    &-item > a {
+      text-align: center;
+    }
+  }
+}

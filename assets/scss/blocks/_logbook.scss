@@ -1,0 +1,60 @@
+.logbook {
+  &_header {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    background: $white;
+    border-radius: 3px;
+    border: 1px solid $border;
+    align-items: center;
+
+    &-item {
+      & h5 {
+        margin: 0;
+      }
+    }
+  }
+
+  &_item {
+    background: $white;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    padding: 16px;
+    border-radius: 3px;
+
+    &-nm {
+      display: inline-block;
+      width: 20%;
+    }
+
+    &-route {
+      display: inline-block;
+      width: 70%;
+    }
+
+    &-submit > span {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 1023.98px) {
+  .logbook {
+    &_item {
+      & > header > .text-secondary {
+        display: block;
+        margin-top: 12px;
+      }
+
+      &-nm,
+      &-route {
+        width: 100%;
+        margin-bottom: 12px;
+      }
+
+      &-submit > span {
+        display: inline-block;
+      }
+    }
+  }
+}

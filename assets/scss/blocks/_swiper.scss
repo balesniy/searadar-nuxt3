@@ -1,0 +1,44 @@
+.swiper {
+	&-arrow {
+		width: 48px;
+		height: 48px;
+		background: $white;
+		border: 1px solid $main;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		color: $bg-dark;
+		transition: 0.3s ease-in-out;
+		cursor: pointer;
+
+		&_small {
+			width: 32px;
+			height: 32px;
+		}
+
+		&_simple {
+			border: none;
+			box-shadow: $shadowButton;
+		}
+
+		&:hover:not(.is-disabled) {
+			background: $main;
+			color: $white;
+		}
+
+		&.is-disabled {
+			opacity: 0.5;
+			cursor: default;
+		}
+	}
+
+	&-pagination {
+		right: 10px;
+		width: auto;
+		background: rgba(255, 255, 255, 0.5);
+		border-radius: $radius;
+		padding: 6px 12px;
+		left: auto;
+	}
+}

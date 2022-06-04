@@ -1,0 +1,74 @@
+.concierge_banner {
+  background: linear-gradient(90deg, #ffffff 38.74%, rgba(255, 255, 255, 0) 100%), url("/img/checkin.png") no-repeat;
+  background-size: cover;
+  background-position-x: right;
+  padding: 32px;
+  border-radius: 3px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
+
+  &-name {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    max-width: 550px;
+  }
+
+  &-description {
+    max-width: 500px;
+  }
+}
+
+.concierge_perks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 40px;
+  grid-row-gap: 48px;
+}
+
+.concierge_perk {
+  text-align: left;
+
+  & img {
+    width: 64px;
+    height: 64px;
+  }
+
+  & p {
+    font-size: 20px;
+    font-weight: 500;
+    color: $scnd-txt;
+    margin-top: 16px;
+    margin-bottom: 0;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 1023.98px) {
+  .concierge_perks {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 24px;
+    grid-row-gap: 24px;
+  }
+
+  .concierge_perk {
+    & p {
+      font-size: 1rem;
+    }
+
+    & img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .concierge_banner {
+    padding: 24px;
+
+    &-name {
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 1.7rem;
+    }
+  }
+}

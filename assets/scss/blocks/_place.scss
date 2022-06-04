@@ -1,0 +1,14 @@
+.place {
+	display: flex;
+	align-items: center;
+
+	&__flag {
+		width: 17px;
+		min-width: 17px;
+		height: 12px;
+
+		img {
+			display: block;
+		}
+	}
+}
