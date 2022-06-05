@@ -3,11 +3,11 @@
       class="language"
       data-target="language"
       @click="show = !show"
-      v-on-clickaway="handleClickAway"
+      v-click-away="onClickAway"
   >
     <div class="language__data language__data_main">
       <span class="language__flag mr-8">
-        <img :src="require(`@/assets/img/flags/${$i18n.locale.toUpperCase()}.png`)" alt="flag"/>
+        <img :src="getFlagSrc($i18n.locale)" alt="flag"/>
       </span>
       <span class="language__name fs-14">
         {{ $i18n.locale.toUpperCase() }}
@@ -20,7 +20,7 @@
           <a class="language__data" :href="'https://' + domain.url + redirectPath">
             <span class="language__flag mr-8">
               <img
-                  :src="require(`@/assets/img/flags/${domain.locale.toUpperCase()}.png`)"
+                  :src="getFlagSrc(domain.locale)"
                   alt="flag"
               />
             </span>
@@ -35,33 +35,43 @@
 </template>
 
 <script>
-import {directive as onClickaway} from 'vue-clickaway';
-import {LOCALES} from '@/utils/config'
+const DOMAINS = [
+  { url: 'searadar.com', locale: 'en', name: 'English', jivositeId: 'dEXhpHBhDJ' },
+  { url: 'searadar.ru', locale: 'ru', name: 'Russian', jivositeId: 'iadPjhJm3g' },
+  { url: 'searadar.de', locale: 'de', name: 'German', jivositeId: 'dEXhpHBhDJ' },
+  { url: 'searadar.es', locale: 'es', name: 'Spanish', jivositeId: 'dEXhpHBhDJ' },
+  { url: 'searadar.nl', locale: 'nl', name: 'Dutch', jivositeId: 'dEXhpHBhDJ' },
+  { url: 'searadar.pl', locale: 'pl', name: 'Polish', jivositeId: 'dEXhpHBhDJ' },
+  { url: 'searadar.fr', locale: 'fr', name: 'French', jivositeId: 'dEXhpHBhDJ' },
+  { url: 'searadar.ro', locale: 'ro', name: 'Romanian', jivositeId: 'dEXhpHBhDJ' },
+]
 
+const getServiceIcon = async iconName => {
+  const module = await import(/* @vite-ignore */ `~/assets/img/language-flag/${iconName}.png`)
+  return module.default.replace(/^\/@fs/, '')
+}
 
 export default {
-  directives: {
-    onClickaway: onClickaway,
-  },
   data() {
     return {
-      // LOCALES,
       show: false,
-      domains: CONFIG.domains
+      domains: DOMAINS
     }
   },
   methods: {
-    setLocale(locale) {
-      console.log({locale})
-    },
-    handleClickAway() {
+    onClickAway() {
       this.show = false
     },
+    getFlagSrc(code) {
+      const path = `~/assets/img/language-flag/${code.toUpperCase()}.png`
+      const modules = import.meta.globEager("~/assets/img/language-flag/*.png");
+      return modules[path].default;
+    }
   },
-  computed:{
-    redirectPath:function (){
+  computed: {
+    redirectPath() {
       let  url = new URL(document.location.href);
-      if (this.$store.state.user.token) {
+      if (this.$store?.state.user.token) {
         url.searchParams.set('token', this.$store.state.user.token)
       }
       return url.pathname + url.search

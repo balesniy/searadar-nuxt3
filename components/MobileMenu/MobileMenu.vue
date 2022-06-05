@@ -46,7 +46,7 @@
           </div>
 
           <div class="mt-32">
-<!--            <Language />-->
+            <Language />
           </div>
         </div>
       </div>

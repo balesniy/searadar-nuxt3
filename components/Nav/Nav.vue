@@ -56,7 +56,7 @@
             </div>
 
             <div class="g-col t-hidden">
-<!--              <Language />-->
+              <Language />
             </div>
 
             <div class="g-col t-show">
