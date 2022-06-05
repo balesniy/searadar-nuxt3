@@ -78,16 +78,9 @@
   </nav>
 </template>
 
-<script>
-
-export default {
-  name: "Nav",
-  methods:{
-    openChat() {
-      this.$chat.open()
-    }
-  }
-};
+<script setup>
+const { $chat } = useNuxtApp()
+const openChat = () => $chat.open()
 </script>
 
 <style lang="scss">
