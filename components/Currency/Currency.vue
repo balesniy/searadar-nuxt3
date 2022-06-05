@@ -58,7 +58,6 @@ const state = reactive({
 })
 
 const onClickAway = () => {
-  console.log('onClickAway')
   state.show = false
 }
 

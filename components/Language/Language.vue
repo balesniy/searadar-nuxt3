@@ -16,7 +16,7 @@
 
     <transition name="fadeInDown">
       <ul v-if="show" class="language__list" id="language">
-        <li v-for="domain in domains" class="language__item">
+        <li v-for="domain in DOMAINS" class="language__item">
           <a class="language__data" :href="'https://' + domain.url + redirectPath">
             <span class="language__flag mr-8">
               <img
@@ -34,7 +34,9 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { useUserStore } from '~/store/user'
+
 const DOMAINS = [
   { url: 'searadar.com', locale: 'en', name: 'English', jivositeId: 'dEXhpHBhDJ' },
   { url: 'searadar.ru', locale: 'ru', name: 'Russian', jivositeId: 'iadPjhJm3g' },
@@ -51,33 +53,27 @@ const getServiceIcon = async iconName => {
   return module.default.replace(/^\/@fs/, '')
 }
 
-export default {
-  data() {
-    return {
-      show: false,
-      domains: DOMAINS
-    }
-  },
-  methods: {
-    onClickAway() {
-      this.show = false
-    },
-    getFlagSrc(code) {
-      const path = `~/assets/img/language-flag/${code.toUpperCase()}.png`
-      const modules = import.meta.globEager("~/assets/img/language-flag/*.png");
-      return modules[path].default;
-    }
-  },
-  computed: {
-    redirectPath() {
-      let  url = new URL(document.location.href);
-      if (this.$store?.state.user.token) {
-        url.searchParams.set('token', this.$store.state.user.token)
-      }
-      return url.pathname + url.search
-    }
+const show = ref(false)
+
+const onClickAway = () => {
+  show.value = false
+}
+
+const getFlagSrc = (code) => {
+  const path = `./language-flag/${code.toUpperCase()}.png`
+  const modules = import.meta.globEager("./language-flag/*.png");
+  return modules[path]?.default;
+}
+
+const userStore = useUserStore()
+
+const redirectPath = computed(() => {
+  const url = new URL(document.location.href);
+  if (userStore.token.length) {
+    url.searchParams.set('token', userStore.token)
   }
-};
+  return url.pathname + url.search
+})
 </script>
 
 <style lang="scss">
