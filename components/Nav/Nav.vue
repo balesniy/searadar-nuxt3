@@ -48,7 +48,7 @@
             </div>
 
             <div class="g-col">
-<!--              <Auth />-->
+              <Auth />
             </div>
 
             <div class="g-col t-hidden">
