@@ -7,16 +7,13 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "Rating",
-  props: {
-    rating: {
-      type: Number,
-      default: 5
-    }
-  },
-};
+<script setup>
+defineProps({
+  rating: {
+    type: Number,
+    default: 5
+  }
+})
 </script>
 
 <style lang="scss">

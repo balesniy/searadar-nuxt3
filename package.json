@@ -10,5 +10,10 @@
     "@intlify/nuxt3": "^0.2.2",
     "nuxt": "3.0.0-rc.3",
     "sass": "^1.52.2"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.1.9",
+    "pinia": "^2.0.14",
+    "vue3-click-away": "^1.2.4"
   }
 }

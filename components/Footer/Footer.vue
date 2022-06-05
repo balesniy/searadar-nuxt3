@@ -40,7 +40,7 @@
 
           <div class="g-col g-col_50 g-col_d-33 g-col_m-100 pb-24">
             <div class="m-show">
-              <div class="g-row g-row_middle g-row_between" @click="showLinks = !showLinks">
+              <div class="g-row g-row_middle g-row_between" @click="toggle">
                 <div class="g-col">
                   <div class="text-uppercase fw-semibold fs-14">
                     {{$t('useful_links.translation')}}
@@ -49,7 +49,7 @@
 
                 <div class="g-col">
                   <button class="button button_simple text-white">
-                    <SvgIcon iconName="chevron-down" className="svg-icon_20" />
+                    <SvgIcon iconName="chevron-down" class="svg-icon_20" />
                   </button>
                 </div>
               </div>
@@ -119,31 +119,31 @@
 
             <div class="g-row g-row_small mb-24">
               <div class="g-col">
-                <img src="@/assets/img/Mastercard.png" alt="Mastercard" />
+                <img src="~/assets/img/Mastercard.png" alt="Mastercard" />
               </div>
 
               <div class="g-col">
-                <img src="@/assets/img/Visa.png" alt="Visa" />
+                <img src="~/assets/img/Visa.png" alt="Visa" />
               </div>
 
               <div class="g-col">
-                <img src="@/assets/img/Maestro.png" alt="Maestro" />
+                <img src="~/assets/img/Maestro.png" alt="Maestro" />
               </div>
 
               <div class="g-col">
-                <img src="@/assets/img/Stripe.png" alt="Stripe" />
+                <img src="~/assets/img/Stripe.png" alt="Stripe" />
               </div>
             </div>
 
             <div class="footer__rating">
               <div class="g-row g-row_middle g-row_between">
                 <div class="g-col">
-                  <img src="@/assets/img/trustpilot.svg" alt="trustpilot" />
+                  <img src="~/assets/img/trustpilot.svg" alt="trustpilot" />
                   <div class="fs-20 text-medium">{{ $t('index__trustpilot_rating_label.translation') }}</div>
                 </div>
 
                 <div class="g-col">
-                  <Rating className="rating_small" />
+                  <Rating class="rating_small" />
                 </div>
               </div>
             </div>
@@ -192,21 +192,19 @@
   </footer>
 </template>
 
-<script>
-export default {
-  name: "Footer",
-  data() {
-    return {
-      showLinks: false,
-    }
-  },
-  computed: {
-    isRuLocale() {
-      return this.$i18n.locale.toUpperCase() === 'RU';
-    },
-  },
-};
+<script setup>
+import { useI18n } from 'vue-i18n'
+/* ref() and computed() are auto-imported */
+
+const { locale } = useI18n()
+const isRuLocale = computed(() => locale.value.toUpperCase() === 'RU')
+
+const showLinks = ref(false)
+const toggle = () => {
+  showLinks.value = !showLinks.value
+}
 </script>
+
 <style lang="scss">
 @import "./footer.scss";
 
